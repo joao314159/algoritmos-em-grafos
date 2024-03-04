@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Grafo{
+class Grafo1{
 
     Grafo(){}
     Grafo(int N){
@@ -17,8 +17,11 @@ class Grafo{
             this->nos_pretos.push_back(nos_pretos[i]);
 
             this->nos_coloridos.push_back(nos_coloridos[i]);
-        }       
-        
+        }
+        this->nos_pretos.push_back(0);
+        this->nos_coloridos.push_back(0);
+
+
     }
 
     int N;
@@ -28,6 +31,35 @@ class Grafo{
     vector<unsigned> nos_coloridos;
 
     vector<unsigned> pesos;
+
+    vector<unsigned> ordenar(){
+
+        vector<unsigned> iniciais;
+
+        unsigned* lista = new unsigned[N];
+
+        for(int i = 0;i<N;i++){
+            lista[N] = 0;
+        }
+
+        for(int i= 0;i<N;i++){
+
+            if(nos_pretos[i]){
+                lista[nos_pretos[i]]++;
+            }
+            if(nos_coloridos[i]){
+                lista[nos_coloridos[i]]++;
+            }
+        }
+
+        for(int i = 0;i<N;i++){
+            if(lista[i] > 0){
+                iniciais.push_back(i);
+            }
+
+        }
+
+    }
 
 
 };
