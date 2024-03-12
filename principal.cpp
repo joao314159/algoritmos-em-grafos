@@ -50,6 +50,7 @@ class Grafo1{
         }
 
         for(int i = 0;i < N;i++){
+            
             //se há mais de uma aresta chegando no vértice nos_pretos[i], nos_pretos[i] é aumentado em 1
             if(nos_pretos[i]){
                 lista[nos_pretos[i]]++;
@@ -58,6 +59,7 @@ class Grafo1{
             if(nos_coloridos[i]){
                 lista[nos_coloridos[i]]++;
             }
+            
         }
 
         for(int i = 0;i<N;i++){
@@ -69,13 +71,26 @@ class Grafo1{
         
         //coloca os elementos iniciais no vetor de retorno
         for(int i = 0;i<iniciais.size();i++){
-            cout<<i<<endl;
+           
             resultado.push_back(iniciais[i]);
         }
         
+        
+        
         for(int i = 0;i<iniciais.size();i++){
-            cout<<i<<endl;
+            
+            //muda o inicial para o vértice para o qual ele aponta (colocar -1 no índice porque o índice é 1 a menos que o valor do vértice)
+            iniciais[i] = nos_pretos[iniciais[i]-1];
+            
         }
+        
+        for(int i = 0;i<iniciais.size();i++){
+            
+           cout<<iniciais[i]<<endl;
+            
+        }
+        
+        
         
         return resultado;
     }
