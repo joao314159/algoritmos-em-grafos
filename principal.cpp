@@ -76,20 +76,53 @@ class Grafo1{
         }
         
         
-        
-        for(int i = 0;i<iniciais.size();i++){
+        while((iniciais[0] != 0) || (iniciais[iniciais.size()] != 0)){
             
-            //muda o inicial para o vértice para o qual ele aponta (colocar -1 no índice porque o índice é 1 a menos que o valor do vértice)
-            iniciais[i] = nos_pretos[iniciais[i]-1];
+            cout<<"teste"<<endl;
             
+            for(int i = 0;i<iniciais.size();i++){
+                
+                cout<<"teste"<<endl;
+                
+                //para evitar repetir
+                if(i == 1){
+                    
+                    cout<<"teste2"<<endl;
+                    
+                    if(iniciais[0] == iniciais[1]){
+                        
+                        cout<<"e"<<endl;
+                        
+                        continue;
+                    }
+                }
+                
+                cout<<"teste"<<endl;
+                
+                //muda o inicial para o vértice colorido para o qual ele aponta
+                if(nos_coloridos[iniciais[i]-1] != 0){
+                    
+                    cout<<"teste"<<endl;
+                    
+                    iniciais[i] = nos_coloridos[iniciais[i]-1];
+                }
+                else{
+                    
+                    cout<<"teste"<<endl;
+                
+                    //muda o inicial para o vértice para o qual ele aponta (colocar -1 no índice porque o índice é 1 a menos que o valor do vértice)
+                    iniciais[i] = nos_pretos[iniciais[i]-1];
+                
+                }
+            }
+            
+            for(int i = 0;i<iniciais.size();i++){
+                
+               resultado.push_back(iniciais[i]);    
+               cout<<iniciais[i]<<endl;
+                
+            }
         }
-        
-        for(int i = 0;i<iniciais.size();i++){
-            
-           cout<<iniciais[i]<<endl;
-            
-        }
-        
         
         
         return resultado;
