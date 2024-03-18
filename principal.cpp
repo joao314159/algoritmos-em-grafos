@@ -68,10 +68,21 @@ class Grafo1{
                 cout<<"vértice inicial: "<<i<<endl;
             }
         }
-        
-        
+
+
         //agora foram selecionados os iniciais, a partir deles diminuímos o grau de entrada dos nós para os quais eles apontam, adicionamos a iniciais os nós com grau de entrada 0 e removemos os graus de entrada antigos
-            
+
+
+
+
+        cout<<"O nó inicial "<<iniciais[0]<<" aponta para " << nos_pretos[iniciais[0]-1]<<endl;
+        cout<<"O nó inicial "<<iniciais[1]<<" aponta para " << nos_pretos[iniciais[1]-1]<<endl;
+
+
+
+
+
+
         //coloca os elementos iniciais no vetor de retorno
         for(int i = 0;i<iniciais.size();i++){
 
