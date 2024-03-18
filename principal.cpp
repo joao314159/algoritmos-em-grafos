@@ -81,16 +81,16 @@ class Grafo1{
         //para cada nó inicial reduzimos o grau do nó para qual ele aponta
         while(iniciais.size()>0){
             
-            if( (nos_pretos[iniciais[i]-1] == 0)&& (nos_coloridos[iniciais[i]-1] == 0 )){
+            if( (nos_pretos[iniciais.back() -1] == 0)&& (nos_coloridos[iniciais.back()-1] == 0 )){
                 //caso o inicial não aponta para nenhum nó pela aresta preta nem pela aresta colorida
                 iniciais.pop();
             }
-            else if(nos_coloridos[iniciais[i]-1] == 0){
+            else if(nos_coloridos[iniciais.back()-1] == 0){
                 //caso o inicial não aponta para nenhum nó pela aresta colorida
             }    
             else{
                 
-            lista[nos_pretos[iniciais[i]-1]]--;
+            lista[nos_pretos[iniciais.back()-1]]--;
             //também é necessário fazer isso com os nós coloridos
             }
         }
