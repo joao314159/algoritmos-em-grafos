@@ -78,7 +78,22 @@ class Grafo1{
         cout<<"O nó inicial "<<iniciais[0]<<" aponta para " << nos_pretos[iniciais[0]-1]<<endl;
         cout<<"O nó inicial "<<iniciais[1]<<" aponta para " << nos_pretos[iniciais[1]-1]<<endl;
 
-
+        //para cada nó inicial reduzimos o grau do nó para qual ele aponta
+        while(iniciais.size()>0){
+            
+            if( (nos_pretos[iniciais[i]-1] == 0)&& (nos_coloridos[iniciais[i]-1] == 0 )){
+                //caso o inicial não aponta para nenhum nó pela aresta preta nem pela aresta colorida
+                iniciais.pop();
+            }
+            else if(nos_coloridos[iniciais[i]-1] == 0){
+                //caso o inicial não aponta para nenhum nó pela aresta colorida
+            }    
+            else{
+                
+            lista[nos_pretos[iniciais[i]-1]]--;
+            //também é necessário fazer isso com os nós coloridos
+            }
+        }
 
 
 
