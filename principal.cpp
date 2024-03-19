@@ -40,6 +40,9 @@ class Grafo1{
 
     vector<unsigned> caminhada(){
 
+        unsigned auxiliar;
+        unsigned auxiliar2;
+
         vector<unsigned> iniciais;
         vector<unsigned> resultado;
 
@@ -80,23 +83,57 @@ class Grafo1{
 
         //para cada nó inicial reduzimos o grau do nó para qual ele aponta
         while(iniciais.size()>0){
-            
-            if( (nos_pretos[iniciais.back() -1] == 0)&& (nos_coloridos[iniciais.back()-1] == 0 )){
+
+            if( (nos_pretos[iniciais.back() -1] <= 0)&& (nos_coloridos[iniciais.back()-1] <= 0 )){
                 //caso o inicial não aponta para nenhum nó pela aresta preta nem pela aresta colorida
-                iniciais.pop();
+                iniciais.pop_back();
             }
             else if(nos_coloridos[iniciais.back()-1] == 0){
-                //caso o inicial não aponta para nenhum nó pela aresta colorida
-            }    
+                //caso o inicial não aponta para nenhum nó pela aresta colorida, mas aponta pela aresta preta
+
+                //diminuímos o grau da variável para a qual o inicial aponta pela aresta preta
+                lista[nos_pretos[iniciais.back()-1]]--;
+
+                //salvamos o valor da variável para a qual o inicial aponta pela aresta preta
+                auxiliar = nos_pretos[iniciais.back() -1];
+
+                resultado.push_back(iniciais.back());
+                iniciais.pop_back();
+
+                //se um nó passou a ter grau de entrada zero, ele é inicial
+                if(lista[auxiliar] <= 0){
+                    iniciais.push_back(auxiliar);
+                }
+            }
             else{
-                
-            lista[nos_pretos[iniciais.back()-1]]--;
-            //também é necessário fazer isso com os nós coloridos
+
+                //caso o nó inicial aponta para outro nó pela aresta preta, e para outro nó pela aresta colorida
+
+                //diminuímos o grau da variável para a qual o inicial aponta pela aresta preta,e pela aresta colorida
+                lista[nos_pretos[iniciais.back()-1]]--;
+                lista[nos_coloridos[iniciais.back()-1]]--;
+
+
+                //salvamos o valor da variável para a qual o inicial aponta pela aresta preta, e pela aresta colorida
+                auxiliar = nos_pretos[iniciais.back() -1];
+                auxiliar2 = nos_coloridos[iniciais.back()-1];
+
+                resultado.push_back(iniciais.back());
+                iniciais.pop_back();
+
+                if(lista[auxiliar] <= 0){
+                     iniciais.push_back(auxiliar);
+                }
+                if(lista[auxiliar2] <= 0){
+                     iniciais.push_back(auxiliar2);
+                }
+
+
             }
         }
 
 
-
+/*
 
         //coloca os elementos iniciais no vetor de retorno
         for(int i = 0;i<iniciais.size();i++){
@@ -112,9 +149,12 @@ class Grafo1{
 
         }
 
-        for(int i = 0;i<iniciais.size();i++){
+        */
+        cout<<"resultado: "<<endl;
 
-           cout<<iniciais[i]<<endl;
+        for(int i = 0;i<resultado.size();i++){
+
+           cout<<resultado[i]<<endl;
 
         }
 
