@@ -86,22 +86,31 @@ class Grafo1{
 
             if( (nos_pretos[iniciais.back() -1] <= 0)&& (nos_coloridos[iniciais.back()-1] <= 0 )){
                 //caso o inicial não aponta para nenhum nó pela aresta preta nem pela aresta colorida
+                cout<<endl;
+                cout<<"O nó "<<iniciais.back()<<" não tem arestas pretas nem coloridas"<<endl;
                 iniciais.pop_back();
+                
             }
             else if(nos_coloridos[iniciais.back()-1] == 0){
                 //caso o inicial não aponta para nenhum nó pela aresta colorida, mas aponta pela aresta preta
 
                 //diminuímos o grau da variável para a qual o inicial aponta pela aresta preta
                 lista[nos_pretos[iniciais.back()-1]]--;
+                cout<<"O nó "<<iniciais.back()<<" aponta para "<<nos_pretos[iniciais.back()-1]<<" pela aresta preta"<<endl;
 
                 //salvamos o valor da variável para a qual o inicial aponta pela aresta preta
                 auxiliar = nos_pretos[iniciais.back() -1];
-
+                
+                cout<<auxiliar<<endl;
+                cout<<"teste "<< iniciais.back();
+                cout<<"teste "<< lista[auxiliar];
+                
                 resultado.push_back(iniciais.back());
                 iniciais.pop_back();
 
                 //se um nó passou a ter grau de entrada zero, ele é inicial
                 if(lista[auxiliar] <= 0){
+                    cout<<"no fim da lista colocamos o nó "<<auxiliar<<endl;
                     iniciais.push_back(auxiliar);
                 }
             }
@@ -176,3 +185,4 @@ int main()
 
     return 0;
 }
+
