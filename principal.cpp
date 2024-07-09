@@ -81,9 +81,6 @@ class Grafo1{
 
         //agora foram selecionados os iniciais, a partir deles diminuímos o grau de entrada dos nós para os quais eles apontam, adicionamos a iniciais os nós com grau de entrada 0 e removemos os graus de entrada antigos
 
-
-
-
         //cout<<"O nó inicial "<<iniciais[0]<<" aponta para " << nos_pretos[iniciais[0]-1]<<endl;
         // cout<<"O nó inicial "<<iniciais[1]<<" aponta para " << nos_pretos[iniciais[1]-1]<<endl;
 
@@ -207,12 +204,24 @@ class Grafo1{
 
 int main()
 {
-    unsigned nos_pretos[NUM_MAX_OP] = {0,0,6,5,2,1,0};
+   /* unsigned nos_pretos[NUM_MAX_OP] = {0,0,6,5,2,1,0};
     unsigned nos_coloridos[NUM_MAX_OP] = {0,0,1,6,5,0,0};
 
     Grafo1 grafo(6,nos_pretos,nos_coloridos);
+*/
+	
+	unsigned nos_pretos[16] = {0,11,12,5,3,15,0,8,2,0,1,14,9,0,13,6};
+	unsigned nos_coloridos[16] = {0,2,0,0,1,0,0,10,14,0,3,15,13,0,5,0};
+	
+	Grafo1 grafo(15,nos_pretos,nos_coloridos);
 
     grafo.caminhada();
 
     return 0;
 }
+
+
+
+
+
+
